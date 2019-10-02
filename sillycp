@@ -1,0 +1,20 @@
+#!/usr/bin/python3
+
+import logging
+import os
+
+def main():
+    stream_fmt = logging.Formatter(
+            '%(levelname)s: %(message)s')
+    log = logging.getLogger('cp')
+    
+    console_log = logging.StreamHandler()
+    console_log.setFormatter(stream_fmt)
+    console_log.setLevel(logging.WARNING)
+    log.addHandler(console_log)
+    
+    log.warning('Yes')
+    exit(1)
+
+if __name__ == '__main__':
+    main()
