@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 
 import logging
+import shutil
+import sys
 
 def main():
     stream_fmt = logging.Formatter(
@@ -11,7 +13,10 @@ def main():
     console_log.setFormatter(stream_fmt)
     console_log.setLevel(logging.WARNING)
     log.addHandler(console_log)
-    
+
+    args = sys.argv
+
+    shutil.copyfile(args[1], args[2])
     log.warning('Yes')
     exit(1)
 
