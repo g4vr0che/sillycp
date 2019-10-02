@@ -16,7 +16,7 @@ def main():
 
     args = sys.argv
 
-    shutil.copyfile(args[1], args[2])
+    shutil.copy(args[1], args[2])
     log.warning('Yes')
     exit(1)
 
