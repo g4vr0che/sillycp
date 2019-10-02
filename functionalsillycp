@@ -16,9 +16,16 @@ def main():
 
     args = sys.argv
 
-    shutil.copy(args[1], args[2])
-    log.warning('Yes')
-    exit(1)
+    try:
+        shutil.copy(args[1], args[2])
+        log.warning('Yes')
+        exit(1)
+    
+    except FileNotFoundError:
+        log.warning('No')
+        
+    except PermissionError:
+        log.warning('No')
 
 if __name__ == '__main__':
     main()
