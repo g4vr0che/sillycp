@@ -1,0 +1,32 @@
+#!/usr/bin/python3
+
+import logging
+import shutil
+import sys
+
+def main():
+    stream_fmt = logging.Formatter(
+            '%(levelname)s: %(message)s')
+    log = logging.getLogger('cp')
+    
+    console_log = logging.StreamHandler()
+    console_log.setFormatter(stream_fmt)
+    console_log.setLevel(logging.WARNING)
+    log.addHandler(console_log)
+
+    args = sys.argv
+
+    try:
+        shutil.copy(args[1], args[2])
+        log.warning('No')
+    
+    except FileNotFoundError:
+        log.warning('No')
+        exit(1)
+        
+    except PermissionError:
+        log.warning('No')
+        exit(1)
+
+if __name__ == '__main__':
+    main()
